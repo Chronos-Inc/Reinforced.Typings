@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
     <metadata minClientVersion="2.12">
         <id>Reinforced.Typings</id>        
-        <title>Reinforced.Typings</title>
+        <title>Chronos2.Reinforced.Typings</title>
         <authors>Pavel B. Novikov and contributors</authors>
         <owners>Pavel B. Novikov</owners>
         <projectUrl>https://github.com/reinforced/Reinforced.Typings</projectUrl>
