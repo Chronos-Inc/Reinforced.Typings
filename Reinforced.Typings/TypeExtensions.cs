@@ -265,13 +265,20 @@ namespace Reinforced.Typings
             return t.GetMethod(name, MembersFlags);
 #endif
         }
-        internal static Type[] _GetGenericArguments(this Type t)
+        internal static Type[] _GetGenericArguments(this Type t, bool includeIgnored = false)
         {
 #if NETCORE
-            return t.GetTypeInfo().GetGenericArguments();
+            var genericArguments = t.GetTypeInfo().GetGenericArguments();
+            var typeDefArguments = t._IsGenericType() ? 
+                t.GetGenericTypeDefinition().GetTypeInfo().GetGenericArguments() 
+                : genericArguments;
 #else
-            return t.GetGenericArguments();
+            var genericArguments = t.GetGenericArguments();
+            var typeDefArguments = t._IsGenericType() ? t.GetGenericTypeDefinition().GetGenericArguments() : genericArguments;
 #endif
+            return includeIgnored
+                ? genericArguments
+                : genericArguments.Where((c, i) => typeDefArguments[i].GetCustomAttribute<TsIgnoreAttribute>(false) == null).ToArray();
         }
 
         internal static PropertyInfo _GetProperty(this Type t, string name)

@@ -7,7 +7,7 @@ namespace Reinforced.Typings.Attributes
     /// </summary>
     [AttributeUsage(
         AttributeTargets.Property | AttributeTargets.Field | AttributeTargets.Method | AttributeTargets.Parameter |
-        AttributeTargets.Constructor)]
+        AttributeTargets.Constructor | AttributeTargets.GenericParameter)]
     public class TsIgnoreAttribute : Attribute
     {
     }
